@@ -396,7 +396,15 @@ jobs:
           working_directory: ./backend
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.eu-central-1.amazonaws.com/index.html"
-            curl -s ${URL} | grep -q "Welcome"
+            echo $URL
+            URL2="http://udapeople-fasd1f15d6b1sdfgh.s3-website-us-east-1.amazonaws.com"
+            if curl -s ${URL2} | grep "Welcome"
+            then
+              # Change this to 0 after the job fails
+              return 1
+            else
+              return 1
+            fi
       - destroy_environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
           when: on_fail
