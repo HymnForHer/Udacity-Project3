@@ -213,7 +213,7 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --output text)
-            curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/backend_url  -d 'http://${BACKEND_IP}:3030'
+            curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/backend_url  -d "http://${BACKEND_IP}:3030"
       - run:
           name: Deploy frontend infrastructure
           working_directory: ./.circleci/files
@@ -294,10 +294,10 @@ jobs:
             if grep -q "has been executed successfully" migration_status
             then
               echo "DB migration was successful, will update kvdb..."
-              curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d 'success'
+              curl -k https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d 'success'
             else
               echo "DB migration failed, please verify setup! Probably the database already exists. Verify setup!"
-              curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d 'failure'
+              curl -k https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d 'failure'
             fi
             echo "WorkflowID=${CIRCLE_WORKFLOW_ID:0:7}"
       - destroy_environment:
