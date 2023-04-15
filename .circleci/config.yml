@@ -285,6 +285,9 @@ jobs:
           name: Run migrations
           working_directory: ./backend
           command: |
+            rm package-lock.json
+            npm cache clean --force
+            npm install
             npm run migrations > migration_status
       - run:
           name: Send migration results to memstash
