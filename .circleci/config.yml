@@ -258,6 +258,11 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
+            apk add --no-cache \
+                libressl-dev \
+                musl-dev \
+                libffi-dev && \
+            pip install --no-cache-dir cryptography==2.8
             ansible --version
       - run:
           name: Configure server
