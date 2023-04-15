@@ -258,7 +258,7 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
-            pip install cryptography==2.4.2
+            pip3 install --upgrade paramiko
             ansible --version
       - run:
           name: Configure server
