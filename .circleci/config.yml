@@ -125,7 +125,7 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install junit coverage reporter
+          name: Install junit coverage reporter for Front-End
           working_directory: ./frontend
           command: npm install --save-dev jest-junit
       - run:
@@ -147,7 +147,7 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install junit coverage reporter
+          name: Install junit coverage reporter for Back-end
           working_directory: ./backend
           command: npm install --save-dev jest-junit
       - run:
@@ -171,7 +171,11 @@ jobs:
       - run:
           name: Check Frontend against security vulnerabilities
           working_directory: ./frontend
-          command: npm audit --audit-level=critical
+          command: |
+            rm package-lock.json
+            npm cache clean --force
+            npm install
+            npm audit --audit-level=critical
 
 
   scan-backend:
