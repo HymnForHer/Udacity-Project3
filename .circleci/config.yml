@@ -200,9 +200,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: |
-            pip install cryptography==2.4.2
-            yum install -y tar gzip
+          command: yum install -y tar gzip
       - run:
           name: Deploy backend infrastructure
           working_directory: ./.circleci/files
@@ -260,6 +258,7 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
+            pip install cryptography==2.4.2
             ansible --version
       - run:
           name: Configure server
