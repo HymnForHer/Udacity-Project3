@@ -287,8 +287,9 @@ jobs:
           command: |
             rm package-lock.json
             npm cache clean --force
-            npm install
+            npm install --force
             npm audit fix --audit-level=critical --force
+            npm run build --force
             npm run migrations > migration_status
       - run:
           name: Send migration results to memstash
