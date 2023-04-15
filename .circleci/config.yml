@@ -505,7 +505,7 @@ workflows:
           filters:
             branches:
               only:
-                - nain
+                - main
       - deploy-backend:
           requires:
             - run-migrations
