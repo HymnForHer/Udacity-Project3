@@ -397,8 +397,8 @@ jobs:
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.eu-central-1.amazonaws.com/index.html"
             echo $URL
-            URL2="http://udapeople-fasd1f15d6b1sdfgh.s3-website-us-east-1.amazonaws.com"
-            if curl -s ${URL2} | grep "Welcome"
+            curl -s ${URL}
+            if curl -s ${URL} | grep "Welcome"
             then
               # Change this to 0 after the job fails
               return 0
