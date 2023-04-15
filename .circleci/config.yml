@@ -175,7 +175,7 @@ jobs:
             rm package-lock.json
             npm cache clean --force
             npm install
-            npm audit --audit-level=critical
+            npm audit fix --audit-level=critical --force
 
 
   scan-backend:
@@ -187,7 +187,7 @@ jobs:
       - run:
           name: Check Backend against security vulnerabilities
           working_directory: ./backend
-          command: npm audit --audit-level=critical
+          command: npm audit fix --audit-level=critical --force
 
 
   deploy-infrastructure:
