@@ -258,7 +258,6 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
-            pip3 install --upgrade paramiko
             ansible --version
       - run:
           name: Configure server
