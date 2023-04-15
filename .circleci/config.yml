@@ -250,7 +250,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["d9:18:0c:e8:11:ac:13:1a:4d:e2:f1:71:61:dd:d4:32"]
+          fingerprints: ["a2:2b:b2:3e:3d:cb:1b:be:bc:98:a5:e5:68:fd:da:02"]
       - attach_workspace:
           at: .
       - run:
@@ -266,7 +266,7 @@ jobs:
             pwd &&
             ls -la
             cat inventory
-            ansible-playbook -i inventory configure-server.yml
+            ansible-playbook -i inventory configure-server.yml -v
       - destroy_environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
           when: on_fail
@@ -352,7 +352,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["d9:18:0c:e8:11:ac:13:1a:4d:e2:f1:71:61:dd:d4:32"]
+          fingerprints: ["a2:2b:b2:3e:3d:cb:1b:be:bc:98:a5:e5:68:fd:da:02"]
       - attach_workspace:
           at: .
       - run:
