@@ -129,7 +129,7 @@ jobs:
           working_directory: ./frontend
           command: npm install --save-dev jest-junit
       - run:
-          name: Run tests with JUnit as reporter
+          name: Run tests with JUnit as reporter for Front-End
           working_directory: ./frontend
           command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit && pwd && ls -la /tmp
           environment:
@@ -151,7 +151,7 @@ jobs:
           working_directory: ./backend
           command: npm install --save-dev jest-junit
       - run:
-          name: Run tests with JUnit as reporter
+          name: Run tests with JUnit as reporter for Back-end
           working_directory: ./backend
           command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit && pwd
           environment:
