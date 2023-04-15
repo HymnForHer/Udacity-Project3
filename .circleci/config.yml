@@ -7,7 +7,7 @@ executors:
       - image: circleci/node:13.8.0
   python:
     docker:
-      - image: python:3.8.0-alpine
+      - image: python:3.9.0-alpine
   aws:
     docker:
       - image: amazon/aws-cli
@@ -200,7 +200,9 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: yum install -y tar gzip
+          command: |
+            pip install cryptography==2.4.2
+            yum install -y tar gzip
       - run:
           name: Deploy backend infrastructure
           working_directory: ./.circleci/files
