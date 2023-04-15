@@ -50,7 +50,7 @@ commands:
           name: Revert migrations
           working_directory: ./backend
           command: |
-            SUCCESS=$(curl -H "token: 2a9e15d6-b9fa-4b1f-a5dc-e3b9643a9b63" --request GET https://api.kvdb.io/values/DB_MIGRATION_<< parameters.id >>)
+            SUCCESS=$(curl --request GET https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/DB_MIGRATION_<< parameters.id >>)
             echo $SUCCESS
             if [[ "$SUCCESS" == "success" ]]
             then
@@ -213,7 +213,7 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --output text)
-            curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/backend_url  -d 'http://$BACKEND_IP:3030'
+            curl https://kvdb.io/GtXmXgoFNdS8mimCmPuSMr/backend_url  -d 'http://${BACKEND_IP}:3030'
       - run:
           name: Deploy frontend infrastructure
           working_directory: ./.circleci/files
@@ -506,7 +506,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
       - deploy-backend:
           requires:
             - run-migrations
