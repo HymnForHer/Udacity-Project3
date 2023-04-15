@@ -258,6 +258,7 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
+            pip install --upgrade pip
             apk add --no-cache \
                 libressl-dev \
                 musl-dev \
