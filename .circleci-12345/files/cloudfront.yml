@@ -1,10 +1,5 @@
 Description: >
-  Cloudfront distribution for UdaPeople. Create with 
-  aws cloudformation deploy \
-         --template-file cloudfront.yml \
-         --stack-name InitialStack\
-         --parameter-overrides WorkflowID=udapeople-thanh29797
-
+  Cloudfront distribution for UdaPeople.
 
 Parameters:
   WorkflowID:
@@ -13,6 +8,7 @@ Parameters:
 
 
 Resources:
+  
   CloudFrontOriginAccessIdentity:
     Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
     Properties:
